@@ -8,7 +8,6 @@ import News from "~/components/News";
 import AdSpace from "~/components/AdSpace";
 
 const Home: NextPage = () => {
-  const hello = api.example.hello.useQuery({ text: "from tRPC" });
 
   return (
     <>
