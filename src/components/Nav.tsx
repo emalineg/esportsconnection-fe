@@ -1,15 +1,7 @@
 const Nav = () => {
     return(
-        <div className="ad-space">
-            <div className="ad-space__container">
-                <div className="ad-space__container__content">
-                    <h1 className="ad-space__container__content__title">Nav</h1>
-                    <p className="ad-space__container__content__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.</p>
-                    <button className="ad-space__container__content__button">Learn More</button>
-                </div>
-            </div>
-        </div>
-        
-    )
-}   
+  <div>nav</div>
+    );
+}
+
 export default Nav;

@@ -1,11 +1,27 @@
 const Podcast = () => {
     return(
-        <div className="ad-space">
-            <div className="ad-space__container">
-                <div className="ad-space__container__content">
-                    <h1 className="ad-space__container__content__title">Podcast</h1>
-                    <p className="ad-space__container__content__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.</p>
-                    <button className="ad-space__container__content__button">Learn More</button>
+        <div>
+            <div>
+                <div className="text-white" >
+                    <div>
+                        <h1>LISTEN TO OUR LATEST INTERVIEW</h1>
+                        <div className="pl-5">
+                            <div>
+                                podcast embed
+                            </div>
+                        </div>
+                     </div>
+                    <div>
+                        <h2>OTHER RECENT INTERVIEWS</h2>
+                        <div className="grid grid-cols-4 gap-4">
+                            <div>
+                            <div className="pl-5">
+                        <div className="col-start-1 col-end-4 bg-indigo-500 rounded-md">list</div>
+                             </div>
+                             </div>
+                        <div className="col-start-4 col-end-4">icons</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

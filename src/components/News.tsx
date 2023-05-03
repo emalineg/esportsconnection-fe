@@ -1,13 +1,18 @@
 const News = () => {
     return(
-        <div className="ad-space">
-            <div className="ad-space__container">
-                <div className="ad-space__container__content">
-                    <h1 className="ad-space__container__content__title">News</h1>
-                    <p className="ad-space__container__content__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.</p>
-                    <button className="ad-space__container__content__button">Learn More</button>
+        <div className="text-white">
+             <div>
+                <h1 className="col-start-1 col-end-3">LATEST NEWS</h1>
+                <div className="grid grid-rows-4 gap-4 pl-5">
+                <div className="bg-indigo-500 rounded-md">UCI VALORANT TEAM WINS WORLD CUP</div>
+                <div className="bg-indigo-500 rounded-md">IRVINE VALLEY COLLEGE DEFEATS...</div>
+                <div className="bg-indigo-500 rounded-md">MORE FUNDING TO GO TO ESPORTS?</div>
+                <div className="bg-indigo-500 rounded-md">ESPORTS AS A JOB INDUSTRY</div>
                 </div>
-            </div>
+                <div>
+                    <p className="text-xs text-right underline">More Esports News!</p>
+                </div>
+             </div>
         </div>
         
     )
