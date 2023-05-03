@@ -1,12 +1,13 @@
 const GuestForm = () => {
     return(
-        <div className="ad-space">
-            <div className="ad-space__container">
-                <div className="ad-space__container__content">
-                    <h1 className="ad-space__container__content__title">Guest Form</h1>
-                    <p className="ad-space__container__content__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.</p>
-                    <button className="ad-space__container__content__button">Learn More</button>
-                </div>
+        <div>
+            <div className="bg-indigo-500 text-white rounded-md justify-center items-center">
+                
+                    <h1 className="text-center pt-5 pb-5">Guest Form</h1>
+                    <div className="text-xs text-center pb-5">We love our local esports community and want to make sure we <br></br> are representing it accurately with those we bring onto our podcast. <br></br>If you know someone that should be invited as a guest, please let us know!</div>
+                    <div className="text-xs text-center pb-5">[input]</div>
+                    <h1 className="text-center pb-5">Submit Form</h1>
+
             </div>
         </div>
         
