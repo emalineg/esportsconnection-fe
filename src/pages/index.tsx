@@ -8,6 +8,7 @@ import News from "~/components/News";
 import AdSpace from "~/components/AdSpace";
 import Events from "~/components/Events";
 import GuestForm from "~/components/GuestForm";
+import Footer from "~/components/Footer";
 
 const Home: NextPage = () => {
   const hello = api.example.hello.useQuery({ text: "from tRPC" });
@@ -28,6 +29,7 @@ const Home: NextPage = () => {
           <AdSpace />
           <Events/>
           <GuestForm/>
+          <Footer/>
         </div>
       </main>
     </>
