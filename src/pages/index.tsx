@@ -6,6 +6,7 @@ import Header from "~/components/Header";
 import Podcast from "~/components/Podcast";
 import News from "~/components/News";
 import AdSpace from "~/components/AdSpace";
+import Events from "~/components/Events";
 
 const Home: NextPage = () => {
   const hello = api.example.hello.useQuery({ text: "from tRPC" });
@@ -24,6 +25,7 @@ const Home: NextPage = () => {
           <Podcast/>
           <News />
           <AdSpace />
+          <Events/>
         </div>
       </main>
     </>

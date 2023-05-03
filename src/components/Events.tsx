@@ -1,13 +1,23 @@
 const Events = () => {
     return(
-        <div className="ad-space">
-            <div className="ad-space__container">
-                <div className="ad-space__container__content">
-                    <h1 className="ad-space__container__content__title">Events</h1>
-                    <p className="ad-space__container__content__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.</p>
-                    <button className="ad-space__container__content__button">Learn More</button>
+        <div className="text-white">
+            <div>
+                <h1>LOCAL EVENTS:</h1>
+                <div className="bg-indigo-500">
+                    <div className="grid grid-cols-2 gap-4">
+                        <div className="grid grid-rows-2 gap-4">
+                           <div>[event image]</div>
+                           <div>[title of event]</div>
+                        </div>
+                        <div className="grid grid-rows-2 gap-4">
+                           <div>[event image]</div>
+                           <div>[title of event]</div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
+           
         </div>
         
     )
