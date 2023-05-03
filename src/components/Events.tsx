@@ -21,7 +21,6 @@ const Events = () => {
                 <div className="bg-indigo-500 rounded-md">UCI EVENTS</div>
                 <div className="bg-indigo-500 rounded-md">ALL EVENTS</div>
                 <div className="bg-indigo-500 rounded-md">IVC EVENTS</div>
-                
             </div>
            
         </div>
