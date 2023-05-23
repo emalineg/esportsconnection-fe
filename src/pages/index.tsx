@@ -21,14 +21,14 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
     
       </Head>
-      <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#6c4fff] to-[#1f026d]">
+      <main className="flex min-h-screen flex-col items-center justify-center bg-indigo-200">
         <div className="flex flex-col items-center justify-center gap-4">
-          <Header/>
-          <Podcast/>
+          <Header />
+          <Podcast />
           <News />
           <AdSpace />
           <Events/>
-          <GuestForm/>
+          <GuestForm/> 
           <Footer/>
         </div>
       </main>
