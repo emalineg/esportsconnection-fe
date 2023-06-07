@@ -1,18 +1,16 @@
 const Events = () => {
     return(
         <div className="text-indigo-900 flex flex-col gap-4 w-full">
-            <div className="flex flex-col gap-4">
-                <h1 className="text-lg font-bold ml-4">LOCAL EVENTS:</h1>
-                <div className="bg-indigo-100">
-                    <div className="grid grid-cols-2 gap-4">
-                        <div className="flex flex-col items-center p-4 gap-2">
-                           <div>[event image]</div>
-                           <div>[title of event]</div>
-                        </div>
-                        <div className="flex flex-col items-center p-4 gap-2">
-                           <div>[event image]</div>
-                           <div>[title of event]</div>
-                        </div>
+            <div className="flex flex-col gap-4 md:px-4">
+                <h1 className="text-xl font-semibold mx-4 uppercase md:mx-0">Local Events</h1>
+                <div className="grid grid-cols-2 md:gap-4">
+                    <div className="bg-indigo-100 flex flex-col items-center p-4 gap-2 md:rounded-md">
+                       <div>[event image]</div>
+                       <div>[title of event]</div>
+                    </div>
+                    <div className="bg-indigo-100 flex flex-col items-center p-4 gap-2 md:rounded-md">
+                       <div>[event image]</div>
+                       <div>[title of event]</div>
                     </div>
                 </div>
             </div>
