@@ -1,32 +1,35 @@
 const Footer = () => {
     return(
-        <footer className="bg-indigo-800 w-full">
-            <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
+        <footer className="bg-indigo-800 w-full p-2 flex flex-row">
+            <div className="flex flex-row flex-grow p-2">
+                <a href="https://octalkradio.com/" className="flex mr-3">
+                    <img src="logo.png" className="h-20" alt="Esports Connection OC Talk Radio Logo" />
+                </a>
+                <div className="flex flex-col text-white">
+                    <a className="text-sm uppercase font-bold" href="https://octalkradio.com">OC Talk Radio&apos;s<br />ESports Connection</a>
+                    <p className="text-xs uppercase font-semibold mt-2">Host: Harrison Griffith</p>
+                    <address className="text-xs uppercase font-semibold not-italic mt-1">5270 California Ave, Irvine, CA 92617</address>
+                </div>
+            </div>
+            <div className="ml-4 flex flex-col">
+                <ul className="font-medium text-sm list-none">
+                    <li>
+                        <a href="#" className="text-white text-opacity-70 hover:text-opacity-100">Contact</a>
+                    </li>
+                    <li>
+                        <a href="#" className="text-white text-opacity-70 hover:text-opacity-100">Meet The Team</a>
+                    </li>
+                    <li>
+                        <a href="#" className="text-white text-opacity-70 hover:text-opacity-100">Events</a>
+                    </li>
+                    <li>
+                        <a href="#" className="text-white text-opacity-70 hover:text-opacity-100">Advertise</a>
+                    </li>
+                </ul>
+            </div>
+            {/* <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
                 <div className="md:flex md:justify-between">
-                    <div className="mb-6 md:mb-0">
-                        <a href="https://octalkradio.com/" className="flex items-center">
-                            <img src="logo.png" className="h-20 mr-3" alt="Esports Connection OC Talk Radio Logo" />
-                            <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">OC Talk Radio</span>
-                        </a>
-                    </div>
-                    <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3 ">
-                        <div>
-                            <ul className="text-gray-600 dark:text-gray-400 font-medium">
-                                <li>
-                                    <a href="#" className="hover:underline">Contact</a>
-                                </li>
-                                <li>
-                                    <a href="#" className="hover:underline">Meet The Team</a>
-                                </li>
-                                <li>
-                                    <a href="#" className="hover:underline">Events</a>
-                                </li>
-                                <li>
-                                    <a href="#" className="hover:underline">Advertise</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+                    
                 </div>
                 <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
                 <div className="sm:flex sm:items-center sm:justify-between">
@@ -48,7 +51,7 @@ const Footer = () => {
                         </a> 
                     </div>
                 </div>
-            </div>
+            </div> */}
         </footer>
     );
 };
