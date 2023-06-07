@@ -32,15 +32,15 @@ const Footer = () => {
 
                 <div className="flex flex-row items-center self-center gap-3 my-3">
                     <a href="#" className="h-6 w-6 text-white text-opacity-70 hover:text-opacity-100">
-                        <FontAwesomeIcon icon={faInstagram} fixedWidth />
+                        <FontAwesomeIcon icon={faInstagram} />
                     </a>
 
                     <a href="#" className="h-6 w-6 text-white text-opacity-70 hover:text-opacity-100">
-                        <FontAwesomeIcon icon={faLinkedinIn} fixedWidth />
+                        <FontAwesomeIcon icon={faLinkedinIn} />
                     </a>
                     
                     <a href="#" className="h-6 w-6 text-white text-opacity-70 hover:text-opacity-100">
-                        <FontAwesomeIcon icon={faTwitter} fixedWidth />
+                        <FontAwesomeIcon icon={faTwitter} />
                     </a>
                 </div>
             </div> 
