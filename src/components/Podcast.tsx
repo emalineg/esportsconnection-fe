@@ -8,7 +8,7 @@ const Podcast = () => {
                 <h1 className="text-xl font-semibold mx-4 uppercase">Listen to Our Latest Interview</h1>
                 <div className="px-4 flex items-center justify-center">
                     <div className="rounded-lg bg-indigo-100 p-1 w-full">
-                        [podcast embed]
+                        <iframe style={{borderRadius: '8px'}} src="https://open.spotify.com/embed/episode/63xhARhXMcyOyVbE0qa00s?utm_source=generator&t=0" width="100%" height="152" frameBorder="0" allowFullScreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
                     </div>
                 </div>
             </div>
