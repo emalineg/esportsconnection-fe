@@ -1,4 +1,4 @@
-import { type FormEvent, useState, ChangeEvent } from "react";
+import { type FormEvent, useState, type ChangeEvent } from "react";
 import { api } from "~/utils/api";
 
 const GuestForm = () => {

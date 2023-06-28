@@ -7,7 +7,7 @@ const Footer = () => {
             <div className="container mx-auto p-4 flex flex-col md:flex-row">
                 <div className="flex flex-row flex-grow p-2">
                     <a href="https://octalkradio.com/" className="flex mr-3">
-                        <img src="logo.png" className="h-20" alt="Esports Connection OC Talk Radio Logo" />
+                        <img src="/Logo.png" className="h-20" alt="Esports Connection OC Talk Radio Logo" />
                     </a>
                     <div className="flex flex-col text-white">
                         <a className="text-sm uppercase font-bold" href="https://octalkradio.com">OC Talk Radio&apos;s<br />ESports Connection</a>
