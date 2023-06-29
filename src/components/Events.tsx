@@ -15,15 +15,15 @@ const Events = () => {
                 </div>
             </div>
             <div className="eventButtons gap-4 p-4">
-                <div className="bg-indigo-100 rounded-md flex flex-col items-center justify-center">
-                    <span className="font-bold">UCI<br />EVENTS</span>
+                <div className="bg-indigo-100 rounded-md flex flex-col items-center justify-center p-2">
+                    <img src="/uci.png" alt="UCI EVENTS" className="max-h-16" />
                 </div>
                 <div className="flex flex-col gap-2">
                     <button className="bg-indigo-800 p-2 flex flex-row text-sm text-white font-semibold rounded-md">SEE ALL EVENTS</button>
                     <button className="bg-indigo-600 p-2 flex flex-row text-sm text-white font-semibold rounded-md">ADD AN EVENT</button>
                 </div>
-                <div className="bg-indigo-100 rounded-md flex flex-col items-center justify-center">
-                    <span className="font-bold">IVC<br />EVENTS</span>
+                <div className="bg-indigo-100 rounded-md flex flex-col items-center justify-center p-2">
+                    <img src="/ivc.png" alt="IVC EVENTS" className="max-h-16" />
                 </div>
             </div>
         </div>
