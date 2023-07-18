@@ -4,6 +4,7 @@ import { type Event as DbEvent } from "@prisma/client";
 import Footer from "~/components/Footer";
 import Nav from "~/components/Nav";
 import Head from "next/head";
+import { NextSeo, ArticleJsonLd } from "next-seo";
 
 type EventViewPageSSP = {
     event: DbEvent
@@ -13,9 +14,37 @@ const EventViewPage: NextPage<EventViewPageSSP> = ({ event }) => {
     return (
         <>
             <Head>
-                <title>{event.title} - OC Talk Radio</title>
                 <meta name="description" content={event.description} />
                 <link rel="icon" href="/favicon.ico" />
+                <NextSeo
+                    title={event.title}
+                    description={event.description}
+                    openGraph={{
+                        title: event.title,
+                        description: event.description,
+                        url: `https://<website>/events/${event.id}`, // todo: domain
+                        type: 'article',
+                        article: {
+                            publishedTime: event.createdAt.toISOString(),
+                            modifiedTime: event.updatedAt.toISOString(),
+                        },
+                    }}
+                    twitter={{
+                        cardType: ''
+                    }}
+                />
+                <ArticleJsonLd
+                    type="BlogPosting"
+                    url={`https://<website>/events/${event.id}`} // todo: domain
+                    title={event.title}
+                    images={[
+                        event.image
+                    ]}
+                    datePublished={event.createdAt.toISOString()}
+                    dateModified={event.updatedAt.toISOString()}
+                    authorName="OC Talk Radio"
+                    description={event.description}
+                />
             </Head>
             <main className="flex min-h-screen flex-col items-center bg-indigo-200 w-full">
                 <Nav />

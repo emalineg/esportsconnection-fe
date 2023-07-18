@@ -9,7 +9,6 @@ type EventCardProps = {
 const EventCard: FC<EventCardProps> = ({ event }) => {
     return (
         <Link href={`/events/${event.id}`} className="flex flex-row bg-indigo-100 rounded-md">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img className="flex-grow-0" src={event.image} alt={`${event.title} image`} />
 
             <div className="flex flex-col p-4 gap-2">
