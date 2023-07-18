@@ -1,6 +1,7 @@
 import { faClose } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { type ChangeEvent, type FC, type FormEvent, useState } from "react";
+import { api } from "~/utils/api";
 
 type AddEventModalProps = {
     open: boolean;
@@ -16,12 +17,21 @@ const AddEventModal: FC<AddEventModalProps> = ({ open, onClose }) => {
     const [eventImage, setEventImage] = useState<File | undefined>(undefined);
     const [eventImageDataUri, setEventImageDataUri] = useState<string | null>(null);
 
+    const submitEventMutation = api.misc.submitEvent.useMutation();
+
     function formSubmit(e: FormEvent) {
         e.preventDefault();
 
-        // todo: submit data
-
-        setCompleted(true);
+        submitEventMutation.mutateAsync({
+            eventTitle,
+            eventDescription,
+            eventUrl,
+            eventOrganizer,
+            eventImage: eventImageDataUri!,
+            sponsor: false
+        }).then(() => {
+            setCompleted(true);
+        }).catch(console.error);
     }
 
     function uploadFile(e: ChangeEvent<HTMLInputElement>) {

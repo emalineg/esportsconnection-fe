@@ -10,10 +10,19 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Example {
-    id        String   @id @default(cuid())
+model Event {
+    id String @id @default(cuid())
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
+    title String
+    url String
+    image String // data uri because it's easy and we dont need to store a lot of these
+    description String
+    organizer String
+    sponsorship Boolean
+    sponsorName String?
+    sponsorEmail String?
+    approved Boolean @default(false) 
 }
 
 // Necessary for Next auth

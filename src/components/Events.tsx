@@ -1,5 +1,6 @@
 import { useState } from "react";
 import AddEventModal from "./AddEventModal";
+import Link from "next/link";
 
 const Events = () => {
     const [modalOpen, setModalOpen] = useState(false);
@@ -25,7 +26,7 @@ const Events = () => {
                     <img src="/uci.png" alt="UCI EVENTS" className="max-h-16" />
                 </div>
                 <div className="flex flex-col gap-2">
-                    <button className="bg-indigo-800 p-2 flex flex-row text-sm text-white font-semibold rounded-md">SEE ALL EVENTS</button>
+                    <Link href="/events" className="bg-indigo-800 p-2 flex flex-row text-sm text-white font-semibold rounded-md">SEE ALL EVENTS</Link>
                     <button className="bg-indigo-600 p-2 flex flex-row text-sm text-white font-semibold rounded-md cursor-pointer" onClick={() => setModalOpen(true)}>ADD AN EVENT</button>
                 </div>
                 <div className="bg-indigo-100 rounded-md flex flex-col items-center justify-center p-2">
