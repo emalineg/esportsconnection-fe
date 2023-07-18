@@ -1,9 +1,12 @@
 import { useState } from "react";
 import AddEventModal from "./AddEventModal";
 import Link from "next/link";
+import { api } from "~/utils/api";
+import EventCard from "./EventCard";
 
 const Events = () => {
     const [modalOpen, setModalOpen] = useState(false);
+    const recentEventsQuery = api.misc.recentEvents.useQuery();
 
     return(
         <div className="text-indigo-900 flex flex-col gap-4 w-full">
@@ -11,14 +14,7 @@ const Events = () => {
             <div className="flex flex-col gap-4 md:px-4">
                 <h1 className="text-xl font-semibold mx-4 uppercase md:mx-0">Local Events</h1>
                 <div className="grid grid-cols-2 md:gap-4">
-                    <div className="bg-indigo-100 flex flex-col items-center p-4 gap-2 md:rounded-md">
-                       <div>[event image]</div>
-                       <div>[title of event]</div>
-                    </div>
-                    <div className="bg-indigo-100 flex flex-col items-center p-4 gap-2 md:rounded-md">
-                       <div>[event image]</div>
-                       <div>[title of event]</div>
-                    </div>
+                    {recentEventsQuery.data && recentEventsQuery.data.map(it => (<EventCard key={it.id} event={it} />))}
                 </div>
             </div>
             <div className="eventButtons gap-4 p-4">
