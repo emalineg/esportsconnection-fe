@@ -19,7 +19,6 @@ const TeamCard: FC<TeamCardProps> = ({ name, picture, title, description, twitte
     return (
         <div className="items-center bg-indigo-100 text-indigo-900 rounded-lg sm:flex">
             <span>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img className="w-full rounded-lg sm:rounded-none sm:rounded-l-lg" src={picture} alt={`${name} Picture`} />
             </span>
             <div className="p-5">
