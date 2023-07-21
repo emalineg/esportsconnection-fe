@@ -5,7 +5,7 @@ const Header = () => {
     return(
         <header className="flex flex-col items-center gap-3 justify-center text-indigo-900">
             <div className='flex flex-col items-center'>
-                <img src="/logo.png" alt="OC Talk Radios Esports Connection Logo" className='h-auto max-w-full md:max-w-[400px]' />
+                <img src="/Logo.png" alt="OC Talk Radios Esports Connection Logo" className='h-auto max-w-full md:max-w-[400px]' />
                 <h1 className="text-2xl text-center font-bold">WHERE THE ESPORTS WORLD GOES TO CONNECT.</h1>
             </div>
             <div className="flex flex-row gap-4 justify-between items-center w-full px-4">
