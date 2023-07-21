@@ -22,7 +22,7 @@ const Home: NextPage = () => {
       </Head>
       <main className="flex min-h-screen flex-col items-center justify-center bg-indigo-200">
         <div className="flex flex-col items-center justify-center gap-4 w-full">
-          <div className="container">
+          <div className="container md:max-w-[120ch]">
             <Header />
             <Podcast />
             <News />

@@ -4,7 +4,7 @@ import { faInstagram, faLinkedinIn, faTwitter } from "@fortawesome/free-brands-s
 const Footer = () => {
     return(
         <footer className="bg-indigo-800 w-full">
-            <div className="container mx-auto p-4 flex flex-col md:flex-row">
+            <div className="container  md:max-w-[120ch] mx-auto p-4 flex flex-col md:flex-row">
                 <div className="flex flex-row flex-grow p-2">
                     <a href="https://octalkradio.com/" className="flex mr-3">
                         <img src="/Logo.png" className="h-20" alt="Esports Connection OC Talk Radio Logo" />
