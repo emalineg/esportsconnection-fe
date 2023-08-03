@@ -1,10 +1,14 @@
 import { z } from "zod";
-
+import Mailgun from "mailgun.js";
+import FormData from "form-data";
 import {
   createTRPCRouter,
   publicProcedure,
-  protectedProcedure,
 } from "~/server/api/trpc";
+import { env } from "~/env.mjs";
+
+const mailgun = new Mailgun(FormData);
+const mg = mailgun.client({username: 'api', key: env.MAILGUN_API_KEY});
 
 export const miscRouter = createTRPCRouter({
   submitGuest: publicProcedure
@@ -15,10 +19,20 @@ export const miscRouter = createTRPCRouter({
       submitterContact: z.string().optional(),
       description: z.string(),
     }))
-    .mutation(({ input }) => {
-      return {
+    .mutation(async ({ input }) => {
+      await mg.messages.create(env.MAILGUN_DOMAIN, {
+        to: env.SEND_TO,
+        from: `Guest Submission <guests@${env.MAILGUN_DOMAIN}>`,
+        subject: `Guest submitted - ${input.guestName}`,
+        text: `
+        Guest: ${input.guestName}
+        Guest Contact: ${input.guestContact}
+        Submitter: ${input.submitterName || 'Empty'}
+        Submitter Contact: ${input.submitterContact || 'Empty'}
         
-      };
+        ${input.description}
+        `,
+      });
     }),
 
   submitEvent: publicProcedure
@@ -32,18 +46,32 @@ export const miscRouter = createTRPCRouter({
       sponsorEmail: z.string().email().optional(),
       sponsorName: z.string().optional(),
     }))
-    .mutation(({ input, ctx }) => ctx.prisma.event.create({
-      data: {
-        title: input.eventTitle,
-        url: input.eventUrl,
-        sponsorship: input.sponsor, 
-        description: input.eventDescription,
-        image: input.eventImage,
-        organizer: input.eventOrganizer,
-        sponsorEmail: input.sponsorEmail,
-        sponsorName: input.sponsorName,
-      }
-    })),
+    .mutation(async ({ input, ctx }) => {
+      const newEvent = await ctx.prisma.event.create({
+        data: {
+          title: input.eventTitle,
+          url: input.eventUrl,
+          sponsorship: input.sponsor, 
+          description: input.eventDescription,
+          image: input.eventImage,
+          organizer: input.eventOrganizer,
+          sponsorEmail: input.sponsorEmail,
+          sponsorName: input.sponsorName,
+        },
+      });
+
+      await mg.messages.create(env.MAILGUN_DOMAIN, {
+        to: env.SEND_TO,
+        from: `Event Submission <events@${env.MAILGUN_DOMAIN}>`,
+        subject: `Event submitted - ${input.eventTitle}`,
+        text: `
+        Event Title: ${input.eventTitle}
+        URL: ${input.eventUrl}
+
+        Approve event at: ${env.NEXTAUTH_URL}/admin/events/${newEvent.id}
+        `,
+      })
+    }),
 
   recentEvents: publicProcedure.input(z.object({
     amount: z.number().optional().default(2)

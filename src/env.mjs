@@ -19,7 +19,10 @@ export const env = createEnv({
       (str) => process.env.VERCEL_URL ?? str,
       // VERCEL_URL doesn't include `https` so it cant be validated as a URL
       process.env.VERCEL ? z.string().min(1) : z.string().url(),
-    ), 
+    ),
+    MAILGUN_API_KEY: z.string().min(1),
+    MAILGUN_DOMAIN: z.string().min(1),
+    SEND_TO: z.string().min(1).email(),
   },
 
   /**
@@ -40,5 +43,8 @@ export const env = createEnv({
     NODE_ENV: process.env.NODE_ENV,
     NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,
     NEXTAUTH_URL: process.env.NEXTAUTH_URL,
+    MAILGUN_API_KEY: process.env.MAILGUN_API_KEY,
+    MAILGUN_DOMAIN: process.env.MAILGUN_DOMAIN,
+    SEND_TO: process.env.SEND_TO,
   },
 });
