@@ -48,8 +48,8 @@ const AddEventModal: FC<AddEventModalProps> = ({ open, onClose }) => {
                 if (!fileType) return // silent fail, extensions limited in markup
 
                 // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-                const uploadName = uuidv4() as string
-                
+                const uploadName = uuidv4()
+
                 const files = [ // construct a list of files
                     new File([fileData], `${uploadName}.${fileType.ext}`, {
                         type: fileType.mime,
