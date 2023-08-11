@@ -147,10 +147,6 @@ export const getServerSideProps: GetServerSideProps<EventAdminPageSSP> = async (
         notFound: true,
     };
 
-    if (!event.approved) return {
-        notFound: true
-    }
-
     return {
         props: {
             event,
