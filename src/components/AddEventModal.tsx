@@ -1,7 +1,10 @@
 import { faClose } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { fileTypeFromBuffer } from "file-type";
 import { type ChangeEvent, type FC, type FormEvent, useState } from "react";
 import { api } from "~/utils/api";
+import { uploadFiles } from "~/utils/uploadthing";
+import { v4 as uuidv4 } from "uuid";
 
 type AddEventModalProps = {
     open: boolean;
@@ -14,7 +17,6 @@ const AddEventModal: FC<AddEventModalProps> = ({ open, onClose }) => {
     const [eventDescription, setEventDescription] = useState('');
     const [eventUrl, setEventUrl] = useState('');
     const [eventOrganizer, setEventOrganizer] = useState('');
-    const [eventImage, setEventImage] = useState<File | undefined>(undefined);
     const [eventImageDataUri, setEventImageDataUri] = useState<string | null>(null);
 
     const submitEventMutation = api.misc.submitEvent.useMutation();
@@ -37,17 +39,32 @@ const AddEventModal: FC<AddEventModalProps> = ({ open, onClose }) => {
     function uploadFile(e: ChangeEvent<HTMLInputElement>) {
         const image = e.target.files![0];
         console.log("file uploaded", image)
-        setEventImage(image)
 
         if (image) {
             const reader = new FileReader();
-            reader.onloadend = () => {
-                console.log(reader.result);
-                // Logs data:<type>;base64,wL2dvYWwgbW9yZ...
-                setEventImageDataUri(reader.result as string)
+            reader.onloadend = async () => {
+                const fileData = reader.result as ArrayBuffer
+                const fileType = await fileTypeFromBuffer(fileData); // Read the file type from the buffer - Thanks, Sindre!
+                if (!fileType) return // silent fail, extensions limited in markup
+
+                // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+                const uploadName = uuidv4() as string
+                
+                const files = [ // construct a list of files
+                    new File([fileData], `${uploadName}.${fileType.ext}`, {
+                        type: fileType.mime,
+                    }),
+                ];
+                
+                const res = await uploadFiles({
+                    files,
+                    endpoint: "imageUploader",
+                });
+                if (res.length === 0) return; // silently fail for now
+                setEventImageDataUri(res[0]!.url)
             };
 
-            reader.readAsDataURL(image);
+            reader.readAsArrayBuffer(image)
         } else setEventImageDataUri(null);
     }
 
@@ -56,7 +73,6 @@ const AddEventModal: FC<AddEventModalProps> = ({ open, onClose }) => {
         setEventOrganizer('');
         setEventDescription('');
         setEventUrl('');
-        setEventImage(undefined);
         setEventImageDataUri(null);
         setCompleted(false);
 

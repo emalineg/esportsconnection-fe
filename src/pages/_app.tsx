@@ -6,6 +6,8 @@ import { api } from "~/utils/api";
 
 import "~/styles/globals.css";
 
+import "@uploadthing/react/styles.css";
+
 import { config } from '@fortawesome/fontawesome-svg-core'
 import '@fortawesome/fontawesome-svg-core/styles.css'
 import { DefaultSeo } from "next-seo";
