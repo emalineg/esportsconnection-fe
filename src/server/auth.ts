@@ -32,6 +32,11 @@ declare module "next-auth" {
   // }
 }
 
+const TEST_EMAILS = [
+  "lizainslie16@gmail.com",
+  "emgayhart@gmail.com"
+];
+
 /**
  * Options for NextAuth.js used to configure adapters, providers, callbacks, etc.
  *
@@ -51,7 +56,7 @@ export const authOptions: NextAuthOptions = {
   providers: [
     EmailProvider({
       async sendVerificationRequest({ identifier: email, url, provider: { from } }) {
-        if (!email.endsWith("@octalkradio.net")) {
+        if (!(email.endsWith("@octalkradio.net") || TEST_EMAILS.includes(email))) {
           throw new Error("Unauthorized email address");
         }
 
