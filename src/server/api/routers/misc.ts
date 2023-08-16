@@ -1,14 +1,10 @@
 import { z } from "zod";
-import Mailgun from "mailgun.js";
-import FormData from "form-data";
+import { mg } from "~/utils/mailgun";
 import {
   createTRPCRouter,
   publicProcedure,
 } from "~/server/api/trpc";
 import { env } from "~/env.mjs";
-
-const mailgun = new Mailgun(FormData);
-const mg = mailgun.client({username: 'api', key: env.MAILGUN_API_KEY});
 
 export const miscRouter = createTRPCRouter({
   submitGuest: publicProcedure
