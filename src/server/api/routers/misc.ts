@@ -80,4 +80,8 @@ export const miscRouter = createTRPCRouter({
     },
     take: input.amount,
   })),
+  recentEpisodes: publicProcedure.query(async ({ ctx }) => {
+    const [episodes] = await ctx.podbean.fetchEpisodes(0, 3);
+    return episodes;
+  }),
 });

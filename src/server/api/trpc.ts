@@ -19,9 +19,11 @@ import { type Session } from "next-auth";
 
 import { getServerAuthSession } from "~/server/auth";
 import { prisma } from "~/server/db";
+import { env } from "~/env.mjs";
 
 type CreateContextOptions = {
   session: Session | null;
+  podbean: PodbeanAPI;
 };
 
 /**
@@ -38,6 +40,7 @@ const createInnerTRPCContext = (opts: CreateContextOptions) => {
   return {
     session: opts.session,
     prisma,
+    podbean: opts.podbean
   };
 };
 
@@ -52,9 +55,16 @@ export const createTRPCContext = async (opts: CreateNextContextOptions) => {
 
   // Get the session from the server using the getServerSession wrapper function
   const session = await getServerAuthSession({ req, res });
+  const podbean = new PodbeanAPI({
+    clientId: env.PODBEAN_CLIENT_ID,
+    clientSecret: env.PODBEAN_CLIENT_SECRET,
+    userAgent: 'ESportsConnection/1.0.0'
+  });
+  await podbean.login(); // login here
 
   return createInnerTRPCContext({
     session,
+    podbean,
   });
 };
 
@@ -68,6 +78,7 @@ export const createTRPCContext = async (opts: CreateNextContextOptions) => {
 import { initTRPC, TRPCError } from "@trpc/server";
 import superjson from "superjson";
 import { ZodError } from "zod";
+import PodbeanAPI from "podbean.js";
 
 const t = initTRPC.context<typeof createTRPCContext>().create({
   transformer: superjson,
