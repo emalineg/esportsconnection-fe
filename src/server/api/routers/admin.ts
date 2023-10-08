@@ -42,6 +42,16 @@ type FetchMultipleEpisodesResponseSuccess = {
     has_more: boolean;
 }
 
+type EmbedResponseSuccess = {
+    version: "1.0";
+    provider_name: "Podbean";
+    provider_url: "http://podbean.org";
+    width: number;
+    height: number;
+    type: "rich";
+    html: string;
+}
+
 const PODBEAN_V1_API_BASE = 'https://api.podbean.com/v1';
 
 import {
@@ -119,21 +129,26 @@ export const adminRouter = createTRPCRouter({
             const loginResponseData: LoginResponseSuccess = await loginResp.json() as LoginResponseSuccess;
             const accessToken = loginResponseData.access_token;
 
-            const res = await fetch(`${PODBEAN_V1_API_BASE}/episodes?access_token=${accessToken}&offset=0&limit=3`)
+            const episodesResp = await fetch(`${PODBEAN_V1_API_BASE}/episodes?access_token=${accessToken}&offset=0&limit=3`)
           
-            if (!res.ok) throw await res.json();
-            const responseData: FetchMultipleEpisodesResponseSuccess = await res.json() as FetchMultipleEpisodesResponseSuccess;
+            if (!episodesResp.ok) throw await episodesResp.json();
+            const episodesResponseData: FetchMultipleEpisodesResponseSuccess = await episodesResp.json() as FetchMultipleEpisodesResponseSuccess;
             
-            console.log(responseData);
+            return await Promise.all(episodesResponseData.episodes.filter(it => it.status === 'publish').map(async (it) => {
+                const embedResp = await fetch(`${PODBEAN_V1_API_BASE}/oembed?format=json&url=${it.permalink_url}`);
+          
+                if (!embedResp.ok) throw await episodesResp.json();
+                const embedResponseData: EmbedResponseSuccess = await embedResp.json() as EmbedResponseSuccess;
 
-            return await Promise.all(responseData.episodes.filter(it => it.status === 'publish').map((it) => ctx.prisma.podcastEpisode.create({
-                data: {
-                    id: it.id,
-                    title: it.title,
-                    hyperlink: it.permalink_url,
-                    embedHtml: ''
-                },
-            })))
+                return await ctx.prisma.podcastEpisode.create({
+                    data: {
+                        id: it.id,
+                        title: it.title,
+                        hyperlink: it.permalink_url,
+                        embedHtml: embedResponseData.html,
+                    },
+                })
+            }))
         } catch (e) {
             console.error(e)
         }

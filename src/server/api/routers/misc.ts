@@ -80,5 +80,9 @@ export const miscRouter = createTRPCRouter({
     },
     take: input.amount,
   })),
-  recentEpisodes: publicProcedure.query(({ ctx }) => ctx.prisma.podcastEpisode.findMany()),
+  recentEpisodes: publicProcedure.query(async ({ ctx }) => {
+    const eps = await ctx.prisma.podcastEpisode.findMany();
+    console.log(eps)
+    return eps;
+  }),
 });
