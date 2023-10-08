@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSpotify } from "@fortawesome/free-brands-svg-icons";
 import { api } from "~/utils/api";
 import { useEffect, useRef } from "react";
+import { faPodcast } from "@fortawesome/free-solid-svg-icons";
 
 const Podcast = () => {
     const recentEpisodesQuery = api.misc.recentEpisodes.useQuery();
@@ -40,7 +40,7 @@ const Podcast = () => {
                                 </div>
                                 <div className="flex flex-row gap-2">
                                     <a href={episode.hyperlink} className='h-8 w-8 flex flex-row items-center justify-center'>
-                                        <FontAwesomeIcon icon={faSpotify} fixedWidth size='2x' />
+                                        <FontAwesomeIcon icon={faPodcast} fixedWidth size='2x' />
                                     </a>
                                 </div>
                             </div>

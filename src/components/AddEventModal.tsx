@@ -161,7 +161,7 @@ const AddEventModal: FC<AddEventModalProps> = ({ open, onClose }) => {
                                 </div>
                             </div>
                             
-                            <button type="submit" className="text-white font-semibold bg-indigo-800 w-full flex flex-row p-2 rounded-md self-center uppercase col-span-1 md:col-span-2 justify-center justify-self-end">Submit</button>
+                            <button type="submit" className="text-white font-semibold bg-indigo-800 w-full flex flex-row p-2 rounded-md self-center uppercase col-span-1 md:col-span-2 mt-4 justify-center justify-self-end">Submit</button>
                         </form>
                     }
                 </div>
