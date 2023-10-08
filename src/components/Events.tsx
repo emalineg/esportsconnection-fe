@@ -11,9 +11,9 @@ const Events = () => {
     return(
         <div className="text-indigo-900 flex flex-col gap-4 w-full">
             <AddEventModal open={modalOpen} onClose={() => setModalOpen(false)} />
-            <div className="flex flex-col gap-4 md:px-4">
-                <h1 className="text-xl font-semibold mx-4 uppercase md:mx-0">Local Events</h1>
-                <div className="grid grid-cols-1 md:grid-cols-2 md:gap-4 p-4">
+            <div className="flex flex-col gap-4 px-4">
+                <h1 className="text-xl font-semibold mx-0 uppercase">Local Events</h1>
+                <div className="grid grid-cols-1 md:grid-cols-2 md:gap-4">
                     {recentEventsQuery.data && recentEventsQuery.data.map(it => (<EventCard key={it.id} event={it} />))}
                 </div>
             </div>
