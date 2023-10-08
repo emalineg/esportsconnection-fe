@@ -85,9 +85,9 @@ const AdminPodcastPage: NextPage<AdminPodcastPageSSP> = ({ episodes: sspEpisodes
                   <tbody>
                     {episodes.map(episode => (
                       <tr key={episode.id}>
-                        <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
+                        <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
                           {episode.title}
-                        </th>
+                        </td>
                         <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                           <a href={episode.hyperlink} target="blank" rel="noreferrer noopener nofollow" className="text-md text-sky-500 font-bold underline underline-offset-1">View on Podbean</a>
                         </td>

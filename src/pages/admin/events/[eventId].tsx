@@ -2,7 +2,7 @@ import type { GetServerSideProps, NextPage } from "next";
 import { prisma } from "~/server/db";
 import Head from "next/head";
 import { NextSeo } from "next-seo";
-import { FormEvent, useMemo, useState } from "react";
+import { type FormEvent, useMemo, useState } from "react";
 import { api } from "~/utils/api";
 import { useRouter } from "next/router";
 import Sidebar from "~/components/admin/Sidebar/Sidebar";

@@ -8,12 +8,12 @@ type EventCardProps = {
 
 const EventCard: FC<EventCardProps> = ({ event }) => {
     return (
-        <Link href={`/events/${event.id}`} className="flex flex-row bg-indigo-100 rounded-md">
-            <img className="flex-grow-0" src={event.image} alt={`${event.title} image`} />
+        <Link href={`/events/${event.id}`} className="flex flex-row bg-indigo-100 max-h-32 rounded-md">
+            <img className="object-contain h-full w-auto rounded-l-md" src={event.image} alt={`${event.title} image`} />
 
             <div className="flex flex-col p-4 gap-2">
                 <h4 className="text-xl font-bold">{event.title}</h4>
-                <p className="">{event.description}</p>
+                <p className="text-ellipsis line-clamp-2">{event.description}</p>
             </div>
         </Link>
     );

@@ -91,21 +91,21 @@ const AdminEventsIndexPage: NextPage<AdminEventsIndexPageSSP> = ({ events: sspEv
                   <tbody>
                     {events.map(event => (
                       <tr key={event.id}>
-                        <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
+                        <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
                           {event.title}
-                        </th>
+                        </td>
                         <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                           <a href={event.url} target="blank" rel="noreferrer noopener nofollow" className="text-md text-sky-500 font-bold underline underline-offset-1">{event.url}</a>
                         </td>
-                        <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
+                        <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
                           {event.organizer}
-                        </th>
-                        <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                          {event.sponsorship ? <span>{event.sponsorName} <a href={`mailto:${event.sponsorEmail}`}>{event.sponsorEmail}</a></span> : "No Sponsor"}
-                        </th>
-                        <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
+                        </td>
+                        <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
+                          {event.sponsorship ? <span>{event.sponsorName} &middot; <a href={`mailto:${event.sponsorEmail}`} className="text-md text-sky-500 font-bold underline underline-offset-1">{event.sponsorEmail}</a></span> : "No Sponsor"}
+                        </td>
+                        <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
                           <FontAwesomeIcon fixedWidth icon={event.approved ? faCheck : faX} className={event.approved ? "text-green-500" : "text-red-500"} />
-                        </th>
+                        </td>
                       </tr>
                     ))}
                   </tbody>
