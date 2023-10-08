@@ -1,4 +1,4 @@
-import { faPodcast } from "@fortawesome/free-solid-svg-icons";
+import { faCalendar, faPodcast } from "@fortawesome/free-solid-svg-icons";
 import CardAction from "../Cards/CardAction";
 
 
@@ -15,7 +15,7 @@ export default function HeaderActions() {
                 <CardAction title="Manage Podcast Episodes" href="/admin/podcast" icon={faPodcast} iconColor="bg-green-500" />
               </div>
               <div className="w-full lg:w-6/12 xl:w-3/12 px-4">
-                
+                <CardAction title="Manage Events" href="/admin/events" icon={faCalendar} iconColor="bg-orange-500" />
               </div>
               <div className="w-full lg:w-6/12 xl:w-3/12 px-4">
                 

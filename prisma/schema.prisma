@@ -28,7 +28,8 @@ model Event {
 model PodcastEpisode {
     id String @id // no default, fetch from podbean
     title String
-    spotifyUrl String?
+    hyperlink String
+    embedHtml String
 }
 
 // Necessary for Next auth

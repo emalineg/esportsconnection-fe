@@ -30,7 +30,7 @@
     "next-auth": "^4.22.5",
     "next-seo": "^6.1.0",
     "nodemailer": "^6.9.4",
-    "podbean.js": "^0.1.0",
+    "podbean.js": "^0.1.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-dropzone": "^14.2.3",

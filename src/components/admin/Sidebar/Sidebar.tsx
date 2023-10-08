@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import {useRouter} from 'next/router';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGear, faPodcast } from '@fortawesome/free-solid-svg-icons';
+import { faCalendar, faGear, faPodcast } from '@fortawesome/free-solid-svg-icons';
 
 export default function Sidebar() {
   const router = useRouter();
@@ -55,6 +55,22 @@ export default function Sidebar() {
                     (router.asPath === "/admin/podcast" ? "opacity-75" : "text-gray-300")
                   } fixedWidth />{" "}
                   Podcast
+                </Link>
+              </li>
+
+              <li className="items-center">
+                <Link
+                  className={
+                    "text-xs uppercase py-3 font-bold block " +
+                    (router.asPath === "/admin/events" ? "text-sky-500 hover:text-sky-600" : "text-gray-700 hover:text-gray-500")
+                  }
+                  href="/admin/events"
+                >
+                  <FontAwesomeIcon icon={faCalendar} className={
+                    "mr-2 text-sm " +
+                    (router.asPath === "/admin/events" ? "opacity-75" : "text-gray-300")
+                  } fixedWidth />{" "}
+                  Events
                 </Link>
               </li>
             </ul>
