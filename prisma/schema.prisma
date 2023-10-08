@@ -25,6 +25,12 @@ model Event {
     approved Boolean @default(false) 
 }
 
+model PodcastEpisode {
+    id String @id // no default, fetch from podbean
+    title String
+    spotifyUrl String?
+}
+
 // Necessary for Next auth
 model Account {
     id                String  @id @default(cuid())
