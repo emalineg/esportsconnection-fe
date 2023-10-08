@@ -55,15 +55,16 @@ export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma),
   providers: [
     EmailProvider({
+      from: env.EMAIL_FROM,
       async sendVerificationRequest({ identifier: email, url, provider: { from } }) {
         if (!(email.endsWith("@octalkradio.net") || TEST_EMAILS.includes(email))) {
           throw new Error("Unauthorized email address");
         }
 
         const res = await mg.messages.create(env.MAILGUN_DOMAIN, {
-          to: email,
-          from: `OC Talk Radio Login <${from}>`,
-          subject: "Login Link",
+          to: `${email}`,
+          from: from,
+          subject: "OC Talk radio Login Link",
           text: `Log in here - ${url}`,
         });
 

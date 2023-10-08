@@ -80,16 +80,5 @@ export const miscRouter = createTRPCRouter({
     },
     take: input.amount,
   })),
-  recentEpisodes: publicProcedure.query(async ({ ctx }) => {
-    const [episodes] = await ctx.podbean.fetchEpisodes(0, 3);
-
-    // tRPC doesn't like classes, only raw data. so here, we select the fields
-    // we need and nothing else. Later, we may switch this to a DB system, but
-    // we will definitely need to add more logic here to fetch and sanitize
-    // embed HTML.
-    return episodes.filter(it => it.status === 'publish').map(it => ({
-      title: it.title,
-      id: it.id,
-    }));
-  }),
+  recentEpisodes: publicProcedure.query(({ ctx }) => ctx.prisma.podcastEpisode.findMany()),
 });

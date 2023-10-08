@@ -1,4 +1,6 @@
 import { z } from "zod";
+import PodbeanAPI from 'podbean.js';
+import { env } from "~/env.mjs";
 
 import {
   createTRPCRouter,
@@ -30,7 +32,13 @@ export const adminRouter = createTRPCRouter({
     }),
 
     fetchLatestEpisodes: protectedProcedure.query(async ({ ctx }) => {
-        const [episodes] = await ctx.podbean.fetchEpisodes(0, 3);
+        const podbean = new PodbeanAPI({
+            clientId: env.PODBEAN_CLIENT_ID,
+            clientSecret: env.PODBEAN_CLIENT_SECRET,
+            userAgent: 'ESportsConnection/1.0.0'
+        });
+        await podbean.login();
+        const [episodes] = await podbean.fetchEpisodes(0, 3);
         await ctx.prisma.podcastEpisode.deleteMany(); // drop all records
 
         return await Promise.all(episodes.map(async (it) => await ctx.prisma.podcastEpisode.create({
