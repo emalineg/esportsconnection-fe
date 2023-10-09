@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faInstagram, faLinkedinIn, faTwitter } from "@fortawesome/free-brands-svg-icons";
+import { faInstagram, faYoutube, faLinkedinIn } from "@fortawesome/free-brands-svg-icons";
 
 const Footer = () => {
     return(
@@ -10,7 +10,7 @@ const Footer = () => {
                         <img src="/Logo.png" className="h-20" alt="Esports Connection OC Talk Radio Logo" />
                     </a>
                     <div className="flex flex-col text-white">
-                        <a className="text-sm uppercase font-bold" href="https://octalkradio.com">OC Talk Radio&apos;s<br />ESports Connection</a>
+                        <a className="text-sm uppercase font-bold" href="https://octalkradio.com">OC Talk Radio&apos;s<br />Esports Connection</a>
                         <p className="text-xs uppercase font-semibold mt-2">Host: Harrison Griffith</p>
                         <address className="text-xs uppercase font-semibold not-italic mt-1">5270 California Ave, Irvine, CA 92617</address>
                     </div>
@@ -32,16 +32,16 @@ const Footer = () => {
                     </ul>
 
                     <div className="flex flex-row items-center self-center gap-3 my-3">
-                        <a href="#" className="h-6 w-6 text-white text-opacity-70 hover:text-opacity-100">
+                        <a href="https://www.instagram.com/esportsconnection/" className="h-6 w-6 text-white text-opacity-70 hover:text-opacity-100">
                             <FontAwesomeIcon icon={faInstagram} />
                         </a>
 
-                        <a href="#" className="h-6 w-6 text-white text-opacity-70 hover:text-opacity-100">
+                        <a href="https://www.linkedin.com/company/oc-talk-radio/" className="h-6 w-6 text-white text-opacity-70 hover:text-opacity-100">
                             <FontAwesomeIcon icon={faLinkedinIn} />
                         </a>
                     
-                        <a href="#" className="h-6 w-6 text-white text-opacity-70 hover:text-opacity-100">
-                            <FontAwesomeIcon icon={faTwitter} />
+                        <a href="https://youtube.com/playlist?list=PLQN6TAdsJwp6jIWEOCZCCzx84ik8SdQo1&si=OOCz9eoUXgnLKuQo" className="h-6 w-6 text-white text-opacity-70 hover:text-opacity-100">
+                            <FontAwesomeIcon icon={faYoutube} />
                         </a>
                     </div>
                 </div>
