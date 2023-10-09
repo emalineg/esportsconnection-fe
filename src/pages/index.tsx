@@ -19,6 +19,7 @@ const Home: NextPage = () => {
           title="Esports Connection"
           themeColor="#c7d2fe"
         />
+        <meta name="google-adsense-account" content="ca-pub-9317075272992115"></meta>
       </Head>
       <main className="flex min-h-screen flex-col items-center justify-center bg-indigo-200">
         <div className="flex flex-col items-center justify-center gap-4 w-full">
