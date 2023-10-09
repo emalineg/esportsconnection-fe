@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faYoutube, faTwitch, faInstagram, faLinkedinIn, faTwitter } from '@fortawesome/free-brands-svg-icons';
+import { faYoutube, faInstagram, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
 
 const Header = () => {
     return(
