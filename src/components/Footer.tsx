@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faInstagram, faYoutube, faLinkedinIn } from "@fortawesome/free-brands-svg-icons";
+import Link from "next/link";
 
 const Footer = () => {
     return(
@@ -18,16 +19,16 @@ const Footer = () => {
                 <div className="md:ml-4 flex flex-col mt-2 md:mt-0">
                     <ul className="font-medium text-sm list-none flex flex-row md:flex-col md:gap-1 w-full md:w-auto justify-between md:justify-start px-4 md:px-0">
                         <li className="inline-flex">
-                            <a href="#" className="text-white text-opacity-70 hover:text-opacity-100">Contact</a>
+                            <Link href="/contact" className="text-white text-opacity-70 hover:text-opacity-100">Contact</Link>
                         </li>
                         <li className="inline-flex">
-                            <a href="#" className="text-white text-opacity-70 hover:text-opacity-100">Meet The Team</a>
+                            <Link href="/team" className="text-white text-opacity-70 hover:text-opacity-100">Meet The Team</Link>
                         </li>
                         <li className="inline-flex">
-                            <a href="#" className="text-white text-opacity-70 hover:text-opacity-100">Events</a>
+                            <Link href="#" className="text-white text-opacity-70 hover:text-opacity-100">Events</Link>
                         </li>
                         <li className="inline-flex">
-                            <a href="#" className="text-white text-opacity-70 hover:text-opacity-100">Advertise</a>
+                            <Link href="/advertise" className="text-white text-opacity-70 hover:text-opacity-100">Advertise</Link>
                         </li>
                     </ul>
 
