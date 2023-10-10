@@ -7,11 +7,11 @@ const Footer = () => {
         <footer className="bg-indigo-800 w-full">
         <div className="container  md:max-w-[120ch] mx-auto p-4 flex flex-col md:flex-row">
         <div className="flex flex-row flex-grow p-2">
-        <a href="https://octalkradio.biz/" className="flex mr-3">
+        <a href="https://octalkradio.biz/" target="_blank" rel="noopener noreferrer" className="flex mr-3">
         <img src="/Logo.png" className="h-20" alt="Esports Connection OC Talk Radio Logo" />
         </a>
         <div className="flex flex-col text-white">
-        <a className="text-sm uppercase font-bold" href="https://octalkradio.biz">OC Talk Radio&apos;s<br />Esports Connection</a>
+        <a className="text-sm uppercase font-bold" href="https://octalkradio.biz" target="_blank" rel="noopener noreferrer">OC Talk Radio&apos;s<br />Esports Connection</a>
         <p className="text-xs uppercase font-semibold mt-2">Host: Harrison Griffith</p>
         <address className="text-xs uppercase font-semibold not-italic mt-1">5270 California Ave, Irvine, CA 92617</address>
         </div>
