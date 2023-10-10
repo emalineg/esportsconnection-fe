@@ -1,4 +1,4 @@
-const ContactPage = () => {
+const Contact = () => {
     return(
         <div className="ad-space">
             <div className="ad-space__container">
@@ -12,4 +12,4 @@ const ContactPage = () => {
         
     )
 }   
-export default ContactPage;
+export default Contact;
