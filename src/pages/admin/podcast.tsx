@@ -8,6 +8,7 @@ import { api } from "~/utils/api";
 import { useState } from 'react';
 import { prisma } from "~/server/db";
 import { NextSeo } from "next-seo";
+import { signIn, useSession } from "next-auth/react";
 
 
 type AdminPodcastPageSSP = {
@@ -15,6 +16,13 @@ type AdminPodcastPageSSP = {
 };
 
 const AdminPodcastPage: NextPage<AdminPodcastPageSSP> = ({ episodes: sspEpisodes }) => {
+  useSession({
+    required: true,
+    async onUnauthenticated() {
+      await signIn()
+    },
+  });
+
   const { data, refetch: fetchPodcastEpisodes } = api.admin.fetchLatestEpisodes.useQuery(undefined, {enabled: false});
   const [episodes, setEpisodes] = useState<PodcastEpisode[]>(sspEpisodes)
 

@@ -8,6 +8,7 @@ import { prisma } from "~/server/db";
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faX } from "@fortawesome/free-solid-svg-icons";
+import { signIn, useSession } from "next-auth/react";
 
 type AdminEventsIndexPageSSP = {
   events: {
@@ -23,6 +24,12 @@ type AdminEventsIndexPageSSP = {
 }
 
 const AdminEventsIndexPage: NextPage<AdminEventsIndexPageSSP> = ({ events: sspEvents }) => {
+  useSession({
+    required: true,
+    async onUnauthenticated() {
+      await signIn()
+    },
+  });
   const [events] = useState(sspEvents);
 
   return (

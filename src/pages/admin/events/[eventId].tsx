@@ -8,6 +8,8 @@ import { useRouter } from "next/router";
 import Sidebar from "~/components/admin/Sidebar/Sidebar";
 import AdminNavbar from "~/components/admin/Navbars/AdminNavbar";
 import HeaderActions from "~/components/admin/headers/HeaderActions";
+import { signIn, useSession } from "next-auth/react";
+// import { getServerAuthSession } from "~/server/auth";
 
 type EventAdminPageSSP = {
     event: {
@@ -25,6 +27,13 @@ type EventAdminPageSSP = {
 };
 
 const EventAdminPage: NextPage<EventAdminPageSSP> = ({ event: sspEvent }) => {
+    useSession({
+        required: true,
+        async onUnauthenticated() {
+            await signIn()
+        },
+    });
+
     const [event, setEvent] = useState(sspEvent);
 
     const unsaved = useMemo(() => {
@@ -344,6 +353,7 @@ const EventAdminPage: NextPage<EventAdminPageSSP> = ({ event: sspEvent }) => {
 };
 
 export const getServerSideProps: GetServerSideProps<EventAdminPageSSP> = async ({ query }) => {
+
     const eventId = query.eventId as string;
 
     const event = await prisma.event.findUnique({

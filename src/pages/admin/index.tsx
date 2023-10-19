@@ -1,4 +1,5 @@
 import type { NextPage } from "next";
+import { signIn, useSession } from "next-auth/react";
 import { NextSeo } from "next-seo";
 import Head from "next/head";
 import AdminNavbar from "~/components/admin/Navbars/AdminNavbar";
@@ -6,6 +7,13 @@ import Sidebar from "~/components/admin/Sidebar/Sidebar";
 import HeaderActions from "~/components/admin/headers/HeaderActions";
 
 const AdminIndexPage: NextPage = () => {
+  useSession({
+    required: true,
+    async onUnauthenticated() {
+      await signIn()
+    },
+  });
+  
   return (
     <>
       <Head>
