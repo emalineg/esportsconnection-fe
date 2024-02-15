@@ -52,9 +52,9 @@ const AdminPodcastPage: NextPage<AdminPodcastPageSSP> = ({ episodes: sspEpisodes
         />
       </Head>
 
-      <main className="absolute top-0 bottom-0 left-0 right-0 flex flex-row">
+      <main>
         <Sidebar />
-        <div className="relative ml-64 flex-grow bg-gray-100">
+        <div className="relative ml-64 bg-gray-100 min-h-screen">
           <AdminNavbar />
           <HeaderActions />
           <div className="px-4 md:px-10 mx-auto w-full -m-24">

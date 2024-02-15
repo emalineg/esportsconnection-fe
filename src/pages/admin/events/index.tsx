@@ -47,14 +47,13 @@ const AdminEventsIndexPage: NextPage<AdminEventsIndexPageSSP> = ({ events: sspEv
             }}
         />
       </Head>
-
-      <main className="absolute top-0 bottom-0 left-0 right-0 flex flex-row">
+      <main>
         <Sidebar />
-        <div className="relative ml-64 flex-grow bg-gray-100">
+        <div className="relative ml-64 bg-gray-100">
           <AdminNavbar />
           <HeaderActions />
-          <div className="px-4 md:px-10 mx-auto w-full -m-24">
-          <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
+          <div className="px-4 pb-4 md:px-10 mx-auto w-full -m-24">
+            <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
               <div className="rounded-t mb-0 px-4 py-3 border-0">
                 <div className="flex flex-wrap items-center">
                   <div className="relative w-full px-4 max-w-full flex-grow flex-1">
