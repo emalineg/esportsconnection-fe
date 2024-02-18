@@ -1,10 +1,17 @@
-import { type NextPage } from "next";
+import { GetServerSideProps, type NextPage } from "next";
 import { NextSeo } from "next-seo";
 import Head from "next/head";
 import Footer from "~/components/Footer";
 import Nav from "~/components/Nav";
+import { type Event as DbEvent } from "@prisma/client";
+import {prisma} from "~/server/db";
+import EventCard from "~/components/EventCard";
 
-const EventsPage: NextPage = () => {
+type EventsPageSSP = {
+  events: (DbEvent)[],
+}
+
+const EventsPage: NextPage<EventsPageSSP> = ({ events }) => {
     return(
         <>
             <Head>
@@ -21,7 +28,7 @@ const EventsPage: NextPage = () => {
                         <p className="font-light text-indigo-600 lg:mb-16 sm:text-xl">Tagline</p>
                     </div>
                     <div className="grid gap-8 md:grid-cols-2 px-4">
-                        {/* todo: list events */}
+                        {events.map(e => (<EventCard event={e} key={e.id} />))}
                     </div>
                 </div>
 
@@ -29,6 +36,28 @@ const EventsPage: NextPage = () => {
             </main>
         </>
     )
-}   
+}
+
+export const getServerSideProps: GetServerSideProps<EventsPageSSP> = async () => {
+  const events = await prisma.event.findMany({
+    orderBy: {
+      createdAt: 'asc',
+    },
+    where: {
+      approved: true,
+    },
+  });
+
+  return {
+    props: {
+      events: events.map(it => ({
+        ...it,
+        // below makes next shut up about date serialization, then tells TS to shut up about type mismatch
+        createdAt: it.createdAt.toISOString() as unknown as Date,
+        updatedAt: it.updatedAt.toISOString() as unknown as Date,
+      })),
+    }
+  }
+}
 
 export default EventsPage;
