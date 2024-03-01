@@ -1,10 +1,10 @@
-import { GetServerSideProps, type NextPage } from "next";
+import { type GetServerSideProps, type NextPage } from "next";
 import { NextSeo } from "next-seo";
 import Head from "next/head";
 import Footer from "~/components/Footer";
 import Nav from "~/components/Nav";
 import { type Event as DbEvent } from "@prisma/client";
-import {prisma} from "~/server/db";
+import { prisma } from "~/server/db";
 import EventCard from "~/components/EventCard";
 
 type EventsPageSSP = {

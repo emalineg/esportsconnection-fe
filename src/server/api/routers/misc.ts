@@ -70,7 +70,7 @@ export const miscRouter = createTRPCRouter({
     }),
 
   recentEvents: publicProcedure.input(z.object({
-    amount: z.number().optional().default(2)
+    amount: z.number().optional().default(10)
   }).optional().default({ amount: 2 })).query(({ input, ctx }) => ctx.prisma.event.findMany({
     orderBy: {
       createdAt: 'asc'
@@ -84,4 +84,17 @@ export const miscRouter = createTRPCRouter({
     const eps = await ctx.prisma.podcastEpisode.findMany();
     return eps;
   }),
+
+  sponsoredEvents: publicProcedure.input(z.object({
+    amount: z.number().optional().default(2)
+  }).optional().default({ amount: 2 })).query(({ input, ctx }) => ctx.prisma.event.findMany({
+    orderBy: {
+      createdAt: 'asc'
+    },
+    where: {
+      sponsorship: true,
+      approved: true,
+    },
+    take: input.amount,
+  })),
 });
