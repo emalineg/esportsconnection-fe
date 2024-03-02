@@ -4,11 +4,12 @@ import { type FC } from "react";
 
 type EventCardProps = {
     event: DbEvent;
+    className?: string,
 };
 
-const EventCard: FC<EventCardProps> = ({ event }) => {
+const EventCard: FC<EventCardProps> = ({ event, className = '' }) => {
     return (
-        <Link href={`/events/${event.id}`} className="flex flex-row bg-indigo-100 max-h-32 rounded-md">
+        <Link href={`/events/${event.id}`} className={`flex flex-row bg-indigo-100 max-h-32 rounded-md ${className}`}>
             <img className="object-cover md:object-contain h-32 w-32 md:h-full md:w-auto rounded-l-md" src={event.image} alt={`${event.title} image`} />
 
             <div className="flex flex-col p-4 gap-2">
